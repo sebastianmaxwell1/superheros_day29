@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Superhero Index</title>
+</head>
+<body>
+<h1> Here are some favorite superheros!</h1>
+<ul>
+    {% for superhero in all_superheros %}
+    <li><h2> {{superhero.name}} </h2></li>
+    {% endfor %}
+</ul>
+</body>
+</html>
