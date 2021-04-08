@@ -11,7 +11,8 @@
 <h1> Here are some favorite superheros!</h1>
 <ul>
     {% for superhero in all_superheros %}
-    <li><h2> {{superhero.name}} </h2></li>
+    <li><h2> {{superhero.name}} </h2>
+        <a href="{% url 'superheros:detail' superhero.id %}">See more info</a></li>
     {% endfor %}
 </ul>
 </body>
