@@ -1,6 +1,16 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import Superhero
+from django.forms import ModelForm
+
+
+class SuperheroForm(ModelForm):
+    class Meta:
+        model = Superhero
+        fields = ['name', 'alter_ego', 'ability', 'secondary_superhero_ability', 'catchphrase']
 
 
 def index(request):
@@ -12,15 +22,15 @@ def index(request):
 
 
 def detail(request, superhero_id):
-    pick_superhero = Superhero.objects.get(Superhero, pk=superhero_id)
+    pick_superhero = get_object_or_404(Superhero, pk=superhero_id)
     context = {
         'pick_superhero': pick_superhero
     }
     return render(request, 'superheros/detail.html', context)
 
 
-def create(request, superhero_id):
-    form = SuperherForm(request.POST or None, request.FILES or None)
+def create(request):
+    form = SuperheroForm(request.POST or None, request.FILES or None)
 
     context = {
         'form': form
@@ -34,7 +44,7 @@ def create(request, superhero_id):
 
 
 def edit(request, superhero_id):
-    superhero = get_objects_or_404(Superhero, pk=superhero_id)
+    superhero = get_object_or_404(Superhero, pk=superhero_id)
 
     form = SuperheroForm(request.POST or None, request.FILES or None, instance=superhero)
 
@@ -51,7 +61,7 @@ def edit(request, superhero_id):
 
 
 def delete(request, superhero_id):
-    superhero = get_objects_or_404(Superhero, pk=superhero_id)
+    superhero = get_object_or_404(Superhero, pk=superhero_id)
     if request.method == 'POST':
         superhero.delete()
         return redirect('superheros:index')

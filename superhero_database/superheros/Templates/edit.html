@@ -8,6 +8,11 @@
     <title>Edit a Superhero!</title>
 </head>
 <body>
-
+<ul>
+    {% for superhero in all_superheros %}
+    <li><h2> {{superhero.name}} </h2>
+        <a href="{% url 'superheros:edit' superhero.id %}">See more info</a></li>
+    {% endfor %}
+</ul>
 </body>
 </html>
