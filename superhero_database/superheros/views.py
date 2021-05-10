@@ -39,22 +39,23 @@ def create(request):
     if form.is_valid():
         form.save()
         return redirect('superheros:index')
+
     else:
         return render(request, 'superheros/create.html', context)
 
 
 def edit(request, superhero_id):
-    superhero = get_object_or_404(Superhero, pk=superhero_id)
+    # superhero = get_object_or_404(Superhero, pk=superhero_id)
 
-    form = SuperheroForm(request.POST or None, request.FILES or None, instance=superhero)
+    form = SuperheroForm(request.POST or None, request.FILES or None)
 
     if form.is_valid():
         form.save()
         return redirect('superheros:index')
 
     context = {
-        'form': form,
-        'superhero image': superhero
+        'form': form
+
     }
 
     return render(request, 'superheros/edit.html', context)
@@ -71,3 +72,4 @@ def delete(request, superhero_id):
     }
 
     return render(request, 'superheros/delete.html', context)
+

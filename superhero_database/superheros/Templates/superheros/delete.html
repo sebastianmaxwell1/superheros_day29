@@ -5,53 +5,35 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Superhero Index</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@900&family=Racing+Sans+One&display=swap" rel="stylesheet">
     <style>
-         body { background-image: url("https://wallpapercave.com/wp/wp4412991.jpg");
+         body { background-image: url("https://wallpapercave.com/wp/wp4268772.jpg");
                background-repeat: no-repeat; background-size: cover; overflow: auto;}
 
 
 
-
     </style>
-</head>
-        <div class="create__superhero__btn ">
-            <a class="btn__link" style="color:black;" href="{% url 'superheros:create' %}">
-                <strong class="btn__name">Create Hero</strong>
-            </a>
-        </div>
-<h1> Superheros!</h1>
-<table class="table">
-    <tr>
-        <th>Name</th>
-        <th>Alter Ego</th>
-        <th>Ability</th>
-        <th>Secondary Superhero Ability</th>
-        <th>Catchphrase</th>
-    </tr>
-    {% for superhero in all_superheros %}
-    <tr>
-        <td>{{superhero.name}}</td>
-        <td>{{superhero.alter_ego}}</td>
-        <td>{{superhero.ability}}</td>
-        <td>{{superhero.secondary_superhero_ability}}</td>
-        <td>{{superhero.catchphrase}}</td>
-        <td><a style="color:black;" href="{% url 'superheros:edit_superhero' superhero.id %}">Edit</a></td>
-        <td><a style="color:black;" href="{% url 'superheros:delete_superhero' superhero.id %}">Delete</a></td>
 
-   </tr>
-    {% endfor %}
-</table>
+
+
+    <title>Thanos Snap!</title>
+</head>
+ <body>
+ <center>
+    <form method="post">{% csrf_token %}
+        Do you want to be Thanos? <strong>{{ superhero.hero_name }}</strong> ?
+        <input type="submit" value="Submit" />
+    </form>
+ </center>
+   <button><a style="color: purple;" href="{% url 'superheros:index' %}">Survive the Snap!</a></button>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-</body>
+ </body>
 </html>

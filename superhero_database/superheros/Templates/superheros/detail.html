@@ -5,15 +5,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Supehero Details!</title>
+    <title>Superhero Details!</title>
 </head>
 <body>
-<ul>
-    {% for superhero in all_superheros %}
-    <li><h2> {{superhero.name}} </h2>
-        <a href="{% url 'superheros:detail' superhero.id %}">See more info</a></li>
-    {% endfor %}
+ <ul style="list-style: none; margin-right: 2rem; font-weight: 800;" >
+     <li>Alter Ego: {{pick_superhero.alter_ego}}</li>
+     <li>Primary Ability: {{pick_superhero.ability}}</li>
+     <li>Secondary Ability: {{pick_superhero.secondary_superhero_ability}}</li>
+     <li>Catchphrase: {{pick_superhero.catchphrase}}</li>
 </ul>
+     {% for superhero in all_superheros %}
+    <li><h2> {{superhero.name}} </h2>
+        <a href="{% url 'superheros:index' superhero.id %}">See more info</a></li>
+    {% endfor %}
+
 
 </body>
 </html>
